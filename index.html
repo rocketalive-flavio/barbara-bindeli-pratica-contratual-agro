@@ -181,9 +181,7 @@ section { padding: 12.8rem 0; overflow: hidden; }
    SECTION: HERO / BANNER
    ════════════════════════════════════════ */
 .s-banner {
-  padding-top: 0;
-  padding-bottom: 0;
-  min-height: 100vh;
+  padding: 0;
   background: var(--verde-primario);
   position: relative;
   overflow: hidden;
@@ -195,7 +193,6 @@ section { padding: 12.8rem 0; overflow: hidden; }
   grid-template-columns: 60% 40%;
   align-items: center;
   gap: 4rem;
-  min-height: 100vh;
 }
 .s-banner__content {
   display: flex;
@@ -207,12 +204,13 @@ section { padding: 12.8rem 0; overflow: hidden; }
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  align-self: end;
   margin-right: -6rem;
+  padding-top: 2%;
 }
 .s-banner__photo img {
   width: 99%;
   max-width: none;
+  max-height: 99vh;
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 2rem 4rem rgba(0,0,0,.35));
@@ -974,7 +972,7 @@ footer p {
       <span class="cta-below" data-aos="fade-up" data-aos-delay="400">Vagas limitadas · Início imediato</span>
     </div>
     <div class="s-banner__photo" data-aos="fade-left" data-aos-delay="200">
-      <img src="barbara-hero.webp" alt="Bárbara Bindeli" width="712" height="1200">
+      <img src="barbara-hero.webp" alt="Bárbara Bindeli" width="712" height="1179">
     </div>
   </div>
 </section>
