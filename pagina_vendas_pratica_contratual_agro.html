@@ -4,9 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prática Contratual no Agro | Bárbara Bindeli</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"></noscript>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
 <style>
+/* Garante visibilidade antes do AOS inicializar */
+[data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+body.aos-initialized [data-aos] { opacity: initial; transform: initial; transition: initial; }
+
 /* ── BASE & VARIABLES ── */
 html { font-size: 62.5%; scroll-behavior: smooth; }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -951,7 +958,7 @@ footer p {
 </style>
 </head>
 <body data-aos-easing="ease" data-aos-duration="1700" data-aos-delay="0">
-
+<main>
 
 <!-- ════════ HERO / BANNER ════════ -->
 <section class="s-banner">
@@ -967,7 +974,7 @@ footer p {
       <span class="cta-below" data-aos="fade-up" data-aos-delay="400">Vagas limitadas · Início imediato</span>
     </div>
     <div class="s-banner__photo" data-aos="fade-left" data-aos-delay="200">
-      <img src="barbara-hero.webp" alt="Bárbara Bindeli">
+      <img src="barbara-hero.webp" alt="Bárbara Bindeli" width="712" height="1200">
     </div>
   </div>
 </section>
@@ -1186,6 +1193,9 @@ footer p {
           class="bio-foto"
           src="foto-bio.webp"
           alt="Bárbara Bindeli"
+          width="435"
+          height="800"
+          loading="lazy"
         >
       </div>
       <div class="bio-texto" data-aos="fade-up">
@@ -1324,6 +1334,8 @@ footer p {
 </section>
 
 
+</main>
+
 <!-- ════════ FOOTER ════════ -->
 <footer>
   <div class="container">
@@ -1332,7 +1344,6 @@ footer p {
 </footer>
 
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ once: true });</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer onload="document.body.classList.add('aos-initialized');AOS.init({once:true})"></script>
 </body>
 </html>
