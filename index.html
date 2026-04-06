@@ -4,12 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prática Contratual no Agro | Bárbara Bindeli</title>
-<meta name="description" content="Aprenda a montar, revisar e blindar contratos agrários com segurança técnica. Curso com Bárbara Bindeli.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="barbara-hero.webp" type="image/webp">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <style>
 /* ── BASE & VARIABLES ── */
 html { font-size: 62.5%; scroll-behavior: smooth; }
@@ -208,7 +204,7 @@ section { padding: 12.8rem 0; overflow: hidden; }
   margin-right: -6rem;
 }
 .s-banner__photo img {
-  width: 125%;
+  width: 99%;
   max-width: none;
   object-fit: contain;
   object-position: bottom center;
@@ -616,7 +612,7 @@ section { padding: 12.8rem 0; overflow: hidden; }
   align-self: end;
 }
 .bio-foto {
-  width: 100%;
+  width: 85%;
   object-fit: cover;
   object-position: center top;
   border: none;
@@ -750,23 +746,25 @@ section { padding: 12.8rem 0; overflow: hidden; }
 }
 .card-price .price-row {
   display: flex;
-  align-items: flex-end;
+  align-items: baseline;
   justify-content: center;
   margin-top: 1.2rem;
-  gap: .2rem;
+  gap: .4rem;
 }
 .card-price .price-currency {
   font-family: var(--font-heading);
-  font-size: 4.6rem;
-  color: rgba(39,54,35,.4);
+  font-size: 2.4rem;
+  color: rgba(39,54,35,.45);
   line-height: 1;
+  font-weight: 400;
 }
 .card-price .price-value {
   font-family: var(--font-heading);
-  font-size: 7rem;
+  font-size: 6rem;
   color: var(--verde-footer);
-  font-weight: 400;
-  line-height: .75;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -1px;
 }
 .card-price .price-cents {
   font-family: var(--font-heading);
@@ -929,54 +927,26 @@ footer p {
   h2 { font-size: 3.8rem; }
   section { padding: 8rem 0; }
 
-  .s-banner { padding-top: 2rem; padding-bottom: 0; min-height: auto; }
-  .s-banner .container { grid-template-columns: 1fr; text-align: center; min-height: auto; gap: 3rem; }
-  .s-banner__content { align-items: center; text-align: center; padding: 0 1.6rem; }
-  .s-banner__photo { order: 1; margin-right: 0; align-self: auto; }
-  .s-banner__photo img { width: 70%; max-width: 36rem; margin: 0 auto; }
-  .s-mercado { margin-top: 0; padding-top: 8rem; }
+  .s-banner { padding-top: 5rem; padding-bottom: 12rem; }
+  .s-banner .container { grid-template-columns: 1fr; text-align: center; }
+  .s-banner__content { align-items: center; text-align: center; }
+  .s-banner__photo { order: -1; }
+  .s-banner__photo img { max-height: 40rem; }
+  .s-mercado { margin-top: -6rem; padding-top: 8rem; }
   .stats-grid { grid-template-columns: 1fr; }
   .antes-depois { grid-template-columns: 1fr; }
   .seta { transform: rotate(90deg); padding: 1.6rem 0; }
   .modulos-grid { grid-template-columns: 1fr; }
   .bio-inner { grid-template-columns: 1fr; }
-  .bio-foto-wrap { position: relative; top: auto; text-align: center; }
-  .bio-foto { max-width: 32rem; margin: 0 auto; border-radius: .8rem; }
+  .bio-foto, .bio-foto-placeholder { max-width: 100%; }
   .s-card .container { padding: 4rem 2.4rem; }
-  .s-faq { padding: 8rem 0; }
-  .faq-question { font-size: 1.6rem; }
 }
 
 @media (max-width: 530px) {
-  h1 { font-size: 3.6rem; }
-  h2 { font-size: 2.8rem; }
-  h3 { font-size: 1.6rem; }
-  section { padding: 6rem 0; }
-
-  .s-banner__photo img { width: 80%; max-width: 28rem; }
-  .s-banner h1 { margin-top: 2rem; }
-  .s-banner p.sub { font-size: 1.6rem; }
-  .s-banner .btn-primary { margin-top: 3.2rem; padding: 1.6rem 3.2rem; font-size: 1.4rem; }
   .s-banner .info-pills { flex-direction: column; gap: .8rem; }
-
-  .lado { padding: 2.4rem; }
-  .modulo-card { padding: 2.4rem; }
   .bonus-grid { grid-template-columns: 1fr; }
-  .bonus-item { padding: 2rem; }
-
-  .bio-texto h3 { font-size: 2.8rem; }
-
-  .s-epiphany blockquote { font-size: 2rem; padding-left: 2rem; }
-  .s-epiphany .epiphany-body p { font-size: 1.6rem; }
-
-  .card-price { padding: 3.2rem 2rem; }
-  .price-value { font-size: 5.6rem; }
-
   .garantia { flex-direction: column; text-align: center; }
   .garantia p { text-align: center; }
-
-  .s-faq { padding: 6rem 0; }
-  .faq-question { font-size: 1.5rem; padding: 2rem 0; }
 }
 </style>
 </head>
@@ -997,10 +967,7 @@ footer p {
       <span class="cta-below" data-aos="fade-up" data-aos-delay="400">Vagas limitadas · Início imediato</span>
     </div>
     <div class="s-banner__photo" data-aos="fade-left" data-aos-delay="200">
-      <picture>
-        <source srcset="barbara-hero.webp" type="image/webp">
-        <img src="barbara-hero.png" alt="Bárbara Bindeli" width="927" height="1200" loading="eager" decoding="async" fetchpriority="high">
-      </picture>
+      <img src="barbara-hero.webp" alt="Bárbara Bindeli">
     </div>
   </div>
 </section>
@@ -1013,7 +980,6 @@ footer p {
 <section class="s-mercado">
   <div class="container">
     <div class="top" data-aos="fade-up">
-      <span class="label">A oportunidade</span>
       <h2>O agronegócio representa <br><em>27% do PIB brasileiro.</em><br>E ainda existe espaço para você.</h2>
       <p>Não é modismo. É o setor que move o país, e que ainda tem poucos advogados preparados para cuidar dos contratos que protegem patrimônios de gerações.</p>
     </div>
@@ -1058,7 +1024,6 @@ footer p {
 <!-- ════════ EPIPHANY ════════ -->
 <section class="s-epiphany">
   <div class="container container--narrow">
-    <span class="label" data-aos="fade-up">A virada</span>
     <h2 data-aos="fade-up">Insegurança técnica não é falta de capacidade. É <em>falta de método.</em></h2>
     <blockquote data-aos="fade-up">
       A diferença entre a advogada que foge do agro e a que fecha contratos de R$ 2 milhões não é inteligência. É saber o que perguntar, o que revisar e como montar cada cláusula sem deixar brecha.
@@ -1074,7 +1039,6 @@ footer p {
 <section class="s-transformacao">
   <div class="container container--narrow">
     <div class="top" data-aos="fade-up">
-      <span class="label">A transformação</span>
       <h2>De <em>travada</em> a consultora de confiança no agro.</h2>
     </div>
     <div class="antes-depois">
@@ -1110,7 +1074,6 @@ footer p {
 <section class="s-modulos">
   <div class="container">
     <div class="top" data-aos="fade-up">
-      <span class="label">O que você vai aprender</span>
       <h2>Do fundamento à <em>prática real do campo.</em></h2>
       <p class="lead">Seis módulos que te levam da teoria ao atendimento com segurança, sem pular etapa.</p>
     </div>
@@ -1172,10 +1135,6 @@ footer p {
         <p>Como conduzir a reunião com o produtor rural com autoridade e clareza desde o primeiro contato.</p>
       </div>
       <div class="bonus-item" data-aos="fade-up" data-aos-delay="150">
-        <h4>Bibliografia Comentada</h4>
-        <p>As referências que sustentam sua especialização, organizadas e comentadas para quem quer ir mais fundo.</p>
-      </div>
-      <div class="bonus-item" data-aos="fade-up" data-aos-delay="200">
         <h4>Estudo de Caso Real</h4>
         <p>Análise de um caso concreto da área para você ver a teoria funcionando na prática real do campo.</p>
       </div>
@@ -1223,10 +1182,11 @@ footer p {
   <div class="container">
     <div class="bio-inner">
       <div class="bio-foto-wrap" data-aos="fade-right">
-        <picture>
-          <source srcset="foto-bio.webp" type="image/webp">
-          <img class="bio-foto" src="foto-bio.png" alt="Bárbara Bindeli" width="533" height="800" loading="lazy" decoding="async">
-        </picture>
+        <img
+          class="bio-foto"
+          src="foto-bio.webp"
+          alt="Bárbara Bindeli"
+        >
       </div>
       <div class="bio-texto" data-aos="fade-up">
         <span class="label" data-aos="fade-up">Quem vai te ensinar</span>
@@ -1264,7 +1224,7 @@ footer p {
 <section class="s-card" id="cta">
   <div class="container">
     <span class="label" data-aos="fade-up">Sua decisão começa agora</span>
-    <h2 data-aos="fade-up">O agro não espera.<br><em>E você também não precisa esperar.</em></h2>
+    <h2 data-aos="fade-up">O agro não espera.</h2>
     <div class="card-subtitle" data-aos="fade-up">
       <p>Cada contrato que você deixa passar por insegurança é um cliente que vai parar na mão de outra advogada.</p>
     </div>
@@ -1276,10 +1236,10 @@ footer p {
       </div>
       <div class="card-price-label">Garante sua vaga agora</div>
       <div class="price-row">
-        <span class="price-currency">R$ </span>
-        <span class="price-value">997</span>
+        <span class="price-currency">R$</span>
+        <span class="price-value">597</span>
       </div>
-      <div class="price-installments">ou em até 12x sem juros</div>
+      <div class="price-installments">ou 12x de R$ 49,75 sem juros</div>
       <a href="#" class="btn-primary">
         Garantir minha vaga agora
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.33 8H12.67" stroke="#273623" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 3.33L12.67 8L8 12.67" stroke="#273623" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1372,7 +1332,7 @@ footer p {
 </footer>
 
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
-<script>document.addEventListener('DOMContentLoaded',function(){AOS.init({once:true,duration:1200})});</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ once: true });</script>
 </body>
 </html>
