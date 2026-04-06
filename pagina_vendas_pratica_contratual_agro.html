@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prática Contratual no Agro | Bárbara Bindeli</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<style>
+/* ── BASE & VARIABLES ── */
+html { font-size: 62.5%; scroll-behavior: smooth; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Playfair Display", serif;
+
+  --verde-primario: #162212;
+  --verde-secundario: #2b3320;
+  --verde-footer: #273623;
+  --verde-musgo: #80886e;
+  --verde-sage: #829a62;
+
+  --dourado: #c4af96;
+  --dourado-claro: #dac38c;
+  --dourado-medio: #d7bd8b;
+  --dourado-escuro: #dcc68d;
+  --dourado-cobre: #c1996a;
+
+  --bege: #f7f2eb;
+  --creme: #F8F6F3;
+  --vermelho-live: #e84131;
+
+  --branco-85: rgba(255,255,255,.85);
+  --branco-70: rgba(255,255,255,.7);
+  --branco-65: rgba(255,255,255,.65);
+  --branco-55: rgba(255,255,255,.55);
+  --branco-45: rgba(255,255,255,.45);
+  --branco-14: rgba(255,255,255,.14);
+  --branco-12: rgba(255,255,255,.12);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--branco-70);
+  background: var(--verde-primario);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ── CONTAINER ── */
+.container { max-width: 110rem; width: 100%; margin: 0 auto; padding: 0 2.4rem; }
+.container--narrow { max-width: 82rem; }
+.container--card { max-width: 80rem; }
+
+/* ── LABEL (uppercase tag) ── */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: .8rem;
+  color: var(--verde-musgo);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+.label--badge {
+  padding: .7rem 1.6rem;
+  border-radius: 33554400px;
+  background: rgba(215,189,139,.1);
+  color: var(--dourado-claro);
+  font-size: 1.4rem;
+  letter-spacing: .35px;
+  text-transform: none;
+}
+.label--badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vermelho-live);
+  opacity: .55;
+  flex-shrink: 0;
+}
+
+/* ── HEADINGS ── */
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; }
+
+h1 { font-size: 6.4rem; color: var(--branco-85); line-height: 110%; }
+h1 b, h1 strong { color: var(--dourado); font-weight: 500; }
+h1 em { font-style: italic; color: var(--dourado); }
+
+h2 { font-size: 4.8rem; color: #fff; line-height: 100%; }
+h2 b, h2 strong, h2 em { font-weight: 500; color: var(--dourado); }
+h2 em { font-style: italic; }
+
+h3 { font-size: 1.8rem; color: #fff; line-height: 155%; font-weight: 500; }
+
+/* ── PARAGRAPH ── */
+p { color: var(--branco-70); font-size: 1.6rem; line-height: 163%; }
+p.sub { color: var(--branco-65); font-size: 1.8rem; line-height: 162%; }
+p.lead { color: var(--branco-55); font-size: 1.6rem; text-align: center; }
+
+/* ── BUTTON PRIMARY ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  padding: 2rem 4rem;
+  border-radius: 10rem;
+  border: none;
+  background: linear-gradient(225deg, var(--dourado-cobre) 0%, var(--dourado-medio) 49.04%, var(--dourado-escuro) 100%);
+  color: var(--verde-footer);
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: .4px;
+  cursor: pointer;
+  transition: background-position .5s ease, transform .25s ease, box-shadow .25s ease;
+  background-size: 200% 200%;
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, var(--dourado-escuro) 0%, var(--dourado-medio) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(201,168,76,.2);
+}
+.btn-primary svg { width: 1.6rem; height: 1.6rem; }
+.btn-primary svg path { stroke: var(--verde-footer); }
+
+/* ── ICON BOX ── */
+.icon-box {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 1.4rem;
+  background: rgba(128,136,110,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icon-box svg { width: 2rem; height: 2rem; }
+
+/* ── ARROW SVG ── */
+.arrow-svg {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* ── SECTION SPACING ── */
+section { padding: 12.8rem 0; overflow: hidden; }
+
+/* ── GLOW EFFECT ── */
+.glow {
+  position: absolute;
+  width: 58rem;
+  height: 58rem;
+  border-radius: 50%;
+  opacity: .18;
+  background: radial-gradient(58.35% 58.35% at 50% 41.65%, var(--dourado-medio) 0%, rgba(215,189,139,0) 100%);
+  filter: blur(36.65px);
+  pointer-events: none;
+}
+
+
+/* ════════════════════════════════════════
+   SECTION: HERO / BANNER
+   ════════════════════════════════════════ */
+.s-banner {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 100vh;
+  background: var(--verde-primario);
+  position: relative;
+  overflow: hidden;
+}
+.s-banner .container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  align-items: center;
+  gap: 4rem;
+  min-height: 100vh;
+}
+.s-banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.s-banner__photo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-self: end;
+  margin-right: -6rem;
+}
+.s-banner__photo img {
+  width: 125%;
+  max-width: none;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 2rem 4rem rgba(0,0,0,.35));
+}
+.s-banner .logo {
+  width: 15.9rem;
+  height: auto;
+  margin-bottom: 5.1rem;
+  object-fit: contain;
+}
+.s-banner h1 { margin-top: 3.1rem; max-width: 80rem; }
+.s-banner p.sub { margin-top: 2.4rem; max-width: 64rem; }
+.s-banner .btn-primary { margin-top: 5.4rem; }
+.s-banner .cta-below {
+  display: block;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: var(--branco-45);
+  letter-spacing: .5px;
+}
+.s-banner .info-pills {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.4rem;
+  list-style: none;
+}
+.s-banner .info-pills li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+
+/* ════════════════════════════════════════
+   SECTION: MERCADO (stats)
+   ════════════════════════════════════════ */
+/* ── DIVISOR DOURADO ── */
+.divider-gold {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--dourado) 15%, var(--dourado) 85%, transparent 100%);
+  z-index: 5;
+}
+.divider-gold::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 2rem;
+  background: var(--dourado);
+  border-radius: 0 0 50% 50%;
+}
+.divider-gold--flat::after {
+  display: none;
+}
+
+.s-mercado {
+  background: var(--verde-primario);
+  margin-top: 0;
+  position: relative;
+  z-index: 3;
+  padding-top: 12.8rem;
+  padding-bottom: 10.2rem;
+}
+.s-mercado .top { text-align: center; max-width: 72rem; margin: 0 auto; }
+.s-mercado .top p { color: var(--branco-65); font-size: 1.7rem; max-width: 64rem; margin: 2rem auto 0; }
+.s-mercado .top h2 em { font-style: italic; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+  margin-top: 6.4rem;
+}
+.stat-card {
+  padding: 3.3rem;
+  border-radius: 1.2rem;
+  border: 1px solid var(--branco-12);
+  text-align: center;
+}
+.stat-card .num {
+  font-family: var(--font-heading);
+  font-size: 5.6rem;
+  font-weight: 500;
+  color: var(--dourado);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.stat-card .desc {
+  font-size: 1.4rem;
+  color: var(--branco-55);
+  line-height: 163%;
+}
+
+
+/* ════════════════════════════════════════
+   SECTION: DOR
+   ════════════════════════════════════════ */
+.s-dor {
+  background: var(--verde-primario);
+  position: relative;
+}
+.s-dor::after {
+  content: "";
+  position: absolute;
+  bottom: -28rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58rem;
+  height: 58rem;
+  border-radius: 50%;
+  opacity: .12;
+  background: radial-gradient(58.35% 58.35% at 50% 41.65%, var(--dourado-medio) 0%, rgba(215,189,139,0) 100%);
+  filter: blur(36.65px);
+  pointer-events: none;
+}
+.s-dor h2 { margin-top: 1.6rem; max-width: 60rem; }
+
+.dor-list { list-style: none; margin-top: 4.8rem; display: flex; flex-direction: column; gap: 0; }
+.dor-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: 1.6rem;
+  color: var(--branco-70);
+  line-height: 163%;
+}
+.dor-list li:last-child { border-bottom: none; }
+.dor-mark {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: rgba(128,136,110,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: .3rem;
+}
+.dor-mark::after {
+  content: "";
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  background: var(--dourado);
+}
+
+
+/* ════════════════════════════════════════
+   SECTION: EPIPHANY
+   ════════════════════════════════════════ */
+.s-epiphany {
+  background: linear-gradient(180deg, var(--verde-primario) 0%, var(--verde-secundario) 100%);
+  text-align: center;
+  position: relative;
+}
+.s-epiphany h2 { margin-top: 1.6rem; }
+
+.s-epiphany blockquote {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-style: italic;
+  color: var(--branco-85);
+  line-height: 150%;
+  max-width: 72rem;
+  margin: 4.8rem auto;
+  position: relative;
+  padding: 0 4rem;
+}
+.s-epiphany blockquote::before {
+  content: "\201C";
+  font-family: var(--font-heading);
+  font-size: 12rem;
+  color: var(--dourado);
+  opacity: .15;
+  position: absolute;
+  top: -4rem;
+  left: -1rem;
+  line-height: 1;
+  font-style: normal;
+}
+.s-epiphany .epiphany-body {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+.s-epiphany .epiphany-body p { color: var(--branco-65); font-size: 1.8rem; line-height: 170%; }
+.s-epiphany .epiphany-body strong { color: #fff; font-weight: 600; }
+
+
+/* ════════════════════════════════════════
+   SECTION: TRANSFORMACAO (antes/depois)
+   ════════════════════════════════════════ */
+.s-transformacao {
+  background: var(--verde-secundario);
+}
+.s-transformacao .top { text-align: center; margin-bottom: 6.4rem; }
+.s-transformacao .top h2 { margin-top: 1.6rem; }
+
+.antes-depois {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2.4rem;
+  align-items: stretch;
+}
+.lado {
+  padding: 3.6rem;
+  border-radius: 1.2rem;
+}
+.lado.antes {
+  background: rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.lado.depois {
+  background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.2);
+}
+.lado h4 {
+  font-size: 1.2rem;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 2.8rem;
+  font-family: var(--font-body);
+}
+.lado.antes h4 { color: var(--branco-45); }
+.lado.depois h4 { color: var(--dourado); }
+.lado ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.lado ul li {
+  font-size: 1.4rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  line-height: 160%;
+}
+.lado.antes ul li { color: var(--branco-55); }
+.lado.depois ul li { color: var(--branco-85); }
+.lado ul li:last-child { border-bottom: none; }
+
+.seta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 3.6rem;
+  color: var(--dourado);
+}
+
+
+/* ════════════════════════════════════════
+   SECTION: MODULOS (produto)
+   ════════════════════════════════════════ */
+.s-modulos {
+  background: linear-gradient(180deg, var(--verde-secundario) 0%, var(--verde-primario) 100%);
+  text-align: center;
+}
+.s-modulos .top { max-width: 72rem; margin: 0 auto; }
+.s-modulos .top p { margin-top: 2rem; }
+.s-modulos .top h2 { margin-top: 1.6rem; }
+
+.modulos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+  margin-top: 6.4rem;
+  text-align: left;
+}
+.modulo-card {
+  padding: 3.3rem;
+  border-radius: 1.2rem;
+  border: 1px solid var(--branco-12);
+  background: rgba(255,255,255,.03);
+  position: relative;
+  transition: border-color .3s ease, background .3s ease;
+}
+.modulo-card:hover {
+  border-color: rgba(201,168,76,.25);
+  background: rgba(255,255,255,.05);
+}
+.modulo-card .modulo-num {
+  font-size: 1.2rem;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--dourado);
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+}
+.modulo-card h3 { margin-bottom: 1.2rem; }
+.modulo-card p { font-size: 1.4rem; color: var(--branco-55); line-height: 163%; }
+
+
+/* ════════════════════════════════════════
+   SECTION: BONUS
+   ════════════════════════════════════════ */
+.s-bonus {
+  background: var(--verde-primario);
+}
+.s-bonus .top { max-width: 60rem; }
+.s-bonus .top h2 { margin-top: 1.6rem; }
+.s-bonus .top p { margin-top: 2rem; }
+
+.bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 2rem;
+  margin-top: 6.4rem;
+}
+.bonus-item {
+  padding: 2.8rem;
+  border-radius: 1.2rem;
+  border: 1px solid var(--branco-12);
+  border-left: 3px solid var(--dourado);
+  background: rgba(255,255,255,.02);
+}
+.bonus-item h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .8rem;
+  line-height: 140%;
+}
+.bonus-item p { font-size: 1.4rem; color: var(--branco-55); line-height: 163%; }
+
+
+/* ════════════════════════════════════════
+   SECTION: PARA QUEM
+   ════════════════════════════════════════ */
+.s-paraquem {
+  background: var(--verde-primario);
+  position: relative;
+}
+.s-paraquem::after {
+  content: "";
+  position: absolute;
+  bottom: -30rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58rem;
+  height: 58rem;
+  border-radius: 50%;
+  opacity: .18;
+  background: radial-gradient(58.35% 58.35% at 50% 41.65%, var(--dourado-medio) 0%, rgba(215,189,139,0) 100%);
+  filter: blur(36.65px);
+  pointer-events: none;
+}
+.s-paraquem h2 { margin-top: 1.6rem; }
+.s-paraquem h2 em { font-style: italic; }
+
+.check-list { list-style: none; margin-top: 4.8rem; display: flex; flex-direction: column; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: 1.6rem;
+  color: var(--branco-70);
+  line-height: 163%;
+}
+.check-list li:last-child { border-bottom: none; }
+
+.check-ico {
+  flex-shrink: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: rgba(128,136,110,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: .2rem;
+}
+.check-ico svg { width: 1.4rem; height: 1.4rem; }
+
+
+/* ════════════════════════════════════════
+   SECTION: BIO
+   ════════════════════════════════════════ */
+.s-quem {
+  background: var(--verde-footer);
+  padding-top: 6.4rem;
+  padding-bottom: 0;
+}
+.s-quem .container { position: relative; z-index: 2; }
+.s-quem .label { color: #fff; }
+
+.bio-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5.6rem;
+  align-items: center;
+  margin-top: 4.8rem;
+}
+.bio-foto-wrap {
+  position: sticky;
+  top: 2rem;
+  align-self: end;
+}
+.bio-foto {
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border: none;
+  border-radius: 0;
+}
+.bio-foto-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: .8rem;
+  border: 1px solid rgba(201,168,76,.2);
+  background: rgba(255,255,255,.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--branco-45);
+  font-size: 1.4rem;
+}
+.bio-texto h3 {
+  font-family: var(--font-heading);
+  font-size: 3.6rem;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: .8rem;
+}
+.bio-texto .cargo {
+  display: block;
+  font-size: 1.2rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 3.2rem;
+}
+.bio-texto p { color: var(--branco-70); font-size: 1.6rem; line-height: 175%; margin-bottom: 1.6rem; }
+.bio-detalhe {
+  margin-top: 2.8rem;
+  padding-top: 2.8rem;
+  border-top: 1px solid rgba(201,168,76,.2);
+}
+.bio-detalhe p { color: var(--branco-55); font-style: italic; }
+
+.bio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 3.2rem;
+  list-style: none;
+}
+.bio-tags li {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  color: #fff;
+  font-size: 1.4rem;
+  padding: .9rem 1.6rem;
+  border-radius: 33554400px;
+  border: 1px solid rgba(220,198,141,.31);
+}
+.bio-tags li svg { width: 1.6rem; height: 1.6rem; }
+
+
+/* ════════════════════════════════════════
+   SECTION: CTA FINAL / CARD
+   ════════════════════════════════════════ */
+.s-card {
+  padding-top: 12.8rem;
+  padding-bottom: 12.8rem;
+  background-color: var(--verde-secundario);
+  position: relative;
+  text-align: center;
+}
+.s-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 68.4rem;
+  opacity: .4;
+  background: linear-gradient(180deg, rgba(130,154,98,0) 0%, var(--verde-sage) 100%);
+  pointer-events: none;
+}
+.s-card .container {
+  position: relative;
+  z-index: 2;
+  max-width: 80rem;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 6.4rem;
+  border: 1px solid var(--branco-14);
+  background: rgba(22,34,18,.44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-card h2 { margin-top: 1.6rem; max-width: 54.1rem; }
+.s-card .card-subtitle {
+  max-width: 50.6rem;
+  margin-top: 1.6rem;
+}
+.s-card .card-subtitle p { color: var(--branco-65); font-size: 1.6rem; text-align: center; line-height: 150%; }
+
+.card-price {
+  padding: 4rem 3.2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(39,54,35,.1);
+  background: var(--bege);
+  margin-top: 4.8rem;
+  max-width: 38rem;
+  width: 100%;
+}
+.card-price .card-price-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+}
+.card-price .card-price-top svg { width: 1.6rem; height: 1.6rem; flex-shrink: 0; }
+.card-price .card-price-top span {
+  color: var(--verde-footer);
+  font-size: 1.4rem;
+  line-height: 142%;
+}
+.card-price .card-price-label {
+  color: rgba(39,54,35,.45);
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  margin-top: 1.6rem;
+}
+.card-price .price-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 1.2rem;
+  gap: .2rem;
+}
+.card-price .price-currency {
+  font-family: var(--font-heading);
+  font-size: 4.6rem;
+  color: rgba(39,54,35,.4);
+  line-height: 1;
+}
+.card-price .price-value {
+  font-family: var(--font-heading);
+  font-size: 7rem;
+  color: var(--verde-footer);
+  font-weight: 400;
+  line-height: .75;
+}
+.card-price .price-cents {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--verde-footer);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+.card-price .price-installments {
+  color: rgba(39,54,35,.45);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: .8rem;
+  letter-spacing: .3px;
+}
+.card-price .btn-primary {
+  width: 100%;
+  margin-top: 3.2rem;
+  padding: 2rem 3.2rem;
+}
+.card-price .access-note {
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(39,54,35,.35);
+  margin-top: 1.2rem;
+  letter-spacing: .3px;
+}
+
+.garantia {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  justify-content: center;
+  margin-top: 4.8rem;
+  max-width: 48rem;
+}
+.garantia-icon {
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 2px solid rgba(201,168,76,.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.garantia-icon svg { width: 2rem; height: 2rem; }
+.garantia p { font-size: 1.4rem; color: var(--branco-55); text-align: left; }
+.garantia strong { color: var(--branco-85); font-weight: 600; }
+
+
+/* ════════════════════════════════════════
+   SECTION: FAQ
+   ════════════════════════════════════════ */
+.s-faq {
+  background: var(--verde-primario);
+  padding: 12.8rem 0;
+}
+.s-faq .top {
+  text-align: center;
+  margin-bottom: 6.4rem;
+}
+.s-faq .top h2 { margin-top: 1.6rem; }
+
+.faq-list {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--branco-14);
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--branco-14);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 2.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--branco-85);
+  text-align: left;
+  gap: 2rem;
+}
+.faq-question:hover { color: var(--dourado); }
+.faq-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform .3s ease;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--dourado);
+  border-radius: 1px;
+}
+.faq-icon::before {
+  width: 2rem; height: 2px;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+}
+.faq-icon::after {
+  width: 2px; height: 2rem;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+  transition: opacity .3s ease;
+}
+.faq-item.open .faq-icon::after { opacity: 0; }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, padding .3s ease;
+}
+.faq-answer p {
+  padding-bottom: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 175%;
+  color: var(--branco-65);
+}
+
+
+/* ════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════ */
+footer {
+  background: var(--verde-footer);
+  padding: 2.8rem 0;
+}
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer p {
+  color: rgba(255,255,255,.6);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 990px) {
+  h1 { font-size: 5rem; }
+  h2 { font-size: 3.8rem; }
+  section { padding: 8rem 0; }
+
+  .s-banner { padding-top: 5rem; padding-bottom: 12rem; }
+  .s-banner .container { grid-template-columns: 1fr; text-align: center; }
+  .s-banner__content { align-items: center; text-align: center; }
+  .s-banner__photo { order: -1; }
+  .s-banner__photo img { max-height: 40rem; }
+  .s-mercado { margin-top: -6rem; padding-top: 8rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .antes-depois { grid-template-columns: 1fr; }
+  .seta { transform: rotate(90deg); padding: 1.6rem 0; }
+  .modulos-grid { grid-template-columns: 1fr; }
+  .bio-inner { grid-template-columns: 1fr; }
+  .bio-foto, .bio-foto-placeholder { max-width: 100%; }
+  .s-card .container { padding: 4rem 2.4rem; }
+}
+
+@media (max-width: 530px) {
+  .s-banner .info-pills { flex-direction: column; gap: .8rem; }
+  .bonus-grid { grid-template-columns: 1fr; }
+  .garantia { flex-direction: column; text-align: center; }
+  .garantia p { text-align: center; }
+}
+</style>
+</head>
+<body data-aos-easing="ease" data-aos-duration="1700" data-aos-delay="0">
+
+
+<!-- ════════ HERO / BANNER ════════ -->
+<section class="s-banner">
+  <div class="container">
+    <div class="s-banner__content">
+      <span class="label--badge" data-aos="fade-up">Prática Contratual no Agro</span>
+      <h1 data-aos="fade-up" data-aos-delay="100">O maior mercado jurídico do Brasil está esperando por uma advogada <em>que saiba o que faz.</em></h1>
+      <p class="sub" data-aos="fade-up" data-aos-delay="200">Aprenda a montar, revisar e blindar contratos agrários com segurança técnica. E comece a atuar no agro falando a língua que o campo entende.</p>
+      <a href="#cta" class="btn-primary" data-aos="fade-up" data-aos-delay="300">
+        Quero minha vaga agora
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.33 8H12.67" stroke="#273623" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 3.33L12.67 8L8 12.67" stroke="#273623" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="cta-below" data-aos="fade-up" data-aos-delay="400">Vagas limitadas · Início imediato</span>
+    </div>
+    <div class="s-banner__photo" data-aos="fade-left" data-aos-delay="200">
+      <img src="barbara-hero.png" alt="Bárbara Bindeli">
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ DIVISOR ════════ -->
+<div class="divider-gold divider-gold--flat"></div>
+
+<!-- ════════ MERCADO ════════ -->
+<section class="s-mercado">
+  <div class="container">
+    <div class="top" data-aos="fade-up">
+      <span class="label">A oportunidade</span>
+      <h2>O agronegócio representa <br><em>27% do PIB brasileiro.</em><br>E ainda existe espaço para você.</h2>
+      <p>Não é modismo. É o setor que move o país, e que ainda tem poucos advogados preparados para cuidar dos contratos que protegem patrimônios de gerações.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="num">27%</span>
+        <span class="desc">do PIB nacional vem do agronegócio — e esse número cresce a cada safra</span>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="num">R$ 5bi+</span>
+        <span class="desc">em disputas contratuais chegam ao judiciário todo ano por contratos mal redigidos</span>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="num">Alto</span>
+        <span class="desc">valor percebido: honorários no agro são incomparáveis com a advocacia generalista</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ DOR ════════ -->
+<section class="s-dor">
+  <div class="container container--narrow">
+    <span class="label" data-aos="fade-up">Você se identifica?</span>
+    <h2 data-aos="fade-up">Você sabe que o agro é o lugar. Mas algo te trava.</h2>
+    <ul class="dor-list">
+      <li data-aos="fade-up"><span class="dor-mark"></span>Aparece cliente do agro e você recusa. Não por falta de vontade, mas porque não se sente tecnicamente pronta.</li>
+      <li data-aos="fade-up" data-aos-delay="50"><span class="dor-mark"></span>Contratos de alto valor te assustam. Terra, safra e legado familiar não aceitam erro.</li>
+      <li data-aos="fade-up" data-aos-delay="100"><span class="dor-mark"></span>O diploma está na parede, o conhecimento está na cabeça. Mas na hora de sentar com o produtor, bate aquela trava.</li>
+      <li data-aos="fade-up" data-aos-delay="150"><span class="dor-mark"></span>Arrendamento, parceria, barter, superfície... O campo tem uma lógica própria que ninguém te ensinou na faculdade.</li>
+      <li data-aos="fade-up" data-aos-delay="200"><span class="dor-mark"></span>Faltam referências femininas nesse mercado. E às vezes parece que ele não foi feito para você.</li>
+      <li data-aos="fade-up" data-aos-delay="250"><span class="dor-mark"></span>Seus honorários não refletem o peso do que você faz, porque no fundo ainda não se sente no direito de cobrar mais.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════ DIVISOR ════════ -->
+<div class="divider-gold divider-gold--flat"></div>
+
+<!-- ════════ EPIPHANY ════════ -->
+<section class="s-epiphany">
+  <div class="container container--narrow">
+    <span class="label" data-aos="fade-up">A virada</span>
+    <h2 data-aos="fade-up">Insegurança técnica não é falta de capacidade. É <em>falta de método.</em></h2>
+    <blockquote data-aos="fade-up">
+      A diferença entre a advogada que foge do agro e a que fecha contratos de R$ 2 milhões não é inteligência. É saber o que perguntar, o que revisar e como montar cada cláusula sem deixar brecha.
+    </blockquote>
+    <div class="epiphany-body" data-aos="fade-up">
+      <p>A Prática Contratual no Agro existe para te dar isso: <strong>método, estrutura e a visão de quem vive o campo</strong>, para que o seu conhecimento jurídico vire consultoria de verdade.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ TRANSFORMACAO ════════ -->
+<section class="s-transformacao">
+  <div class="container container--narrow">
+    <div class="top" data-aos="fade-up">
+      <span class="label">A transformação</span>
+      <h2>De <em>travada</em> a consultora de confiança no agro.</h2>
+    </div>
+    <div class="antes-depois">
+      <div class="lado antes" data-aos="fade-right">
+        <h4>Antes do curso</h4>
+        <ul>
+          <li>Recusa clientes do agro por insegurança</li>
+          <li>Não entende a lógica do campo na prática</li>
+          <li>Trava na hora de revisar contratos de alto valor</li>
+          <li>Cobra menos do que o mercado paga</li>
+          <li>Não encontra referências femininas no setor</li>
+          <li>Sente que o agro não é lugar para ela</li>
+        </ul>
+      </div>
+      <div class="seta" data-aos="fade-up">&#8594;</div>
+      <div class="lado depois" data-aos="fade-left">
+        <h4>Depois do curso</h4>
+        <ul>
+          <li>Pega contratos agrários complexos sem medo</li>
+          <li>Entende como o campo funciona de verdade</li>
+          <li>Revisa, monta e assina contratos de alto valor</li>
+          <li>Cobra honorários à altura do que entrega</li>
+          <li>Senta com clientes de alto patrimônio de igual para igual</li>
+          <li>Vira a referência feminina que o agro precisava</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ MODULOS ════════ -->
+<section class="s-modulos">
+  <div class="container">
+    <div class="top" data-aos="fade-up">
+      <span class="label">O que você vai aprender</span>
+      <h2>Do fundamento à <em>prática real do campo.</em></h2>
+      <p class="lead">Seis módulos que te levam da teoria ao atendimento com segurança, sem pular etapa.</p>
+    </div>
+    <div class="modulos-grid">
+      <div class="modulo-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="modulo-num">Módulo 01</div>
+        <h3>Fundamentos do Direito do Agronegócio aplicado aos Contratos</h3>
+        <p>O mapa do direito agrário. Você entende o sistema antes de atuar nele, com a base que dá segurança.</p>
+      </div>
+      <div class="modulo-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="modulo-num">Módulo 02</div>
+        <h3>Anatomia de um Contrato Agrário</h3>
+        <p>Da primeira reunião com o cliente às cláusulas obrigatórias. Você aprende a estrutura real de um contrato que não deixa brechas.</p>
+      </div>
+      <div class="modulo-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="modulo-num">Módulo 03</div>
+        <h3>Contratos Agrários na Prática</h3>
+        <p>Arrendamento rural, parceria e cessão de superfície. O nível técnico que clientes de alto patrimônio esperam de você.</p>
+      </div>
+      <div class="modulo-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="modulo-num">Módulo 04</div>
+        <h3>Compra e Venda de Imóveis Rurais</h3>
+        <p>Due diligence, pontos críticos e as cláusulas que protegem seu cliente (e a sua reputação) em transações imobiliárias rurais.</p>
+      </div>
+      <div class="modulo-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="modulo-num">Módulo 05</div>
+        <h3>Contratos Complementares do Agronegócio</h3>
+        <p>Comodato, pastoreio e barter. O agro tem mais contratos do que parece, e aqui você aprende cada um deles.</p>
+      </div>
+      <div class="modulo-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="modulo-num">Módulo 06</div>
+        <h3>Como Começar a Atuar na Área</h3>
+        <p>O módulo mais mão na massa. Como sair da formação e começar a atender de verdade, com posicionamento claro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ BONUS ════════ -->
+<section class="s-bonus">
+  <div class="container">
+    <div class="top" data-aos="fade-up">
+      <span class="label">Bônus exclusivos</span>
+      <h2>Ferramentas que encurtam <em>anos de aprendizado.</em></h2>
+      <p>Materiais prontos para usar do primeiro atendimento ao fechamento do contrato.</p>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-item" data-aos="fade-up" data-aos-delay="0">
+        <h4>Minutas prontas de Contrato, Notificações e Distrato</h4>
+        <p>Modelos revisados e adaptáveis. Nenhum atendimento começa do zero.</p>
+      </div>
+      <div class="bonus-item" data-aos="fade-up" data-aos-delay="50">
+        <h4>Check List de Documentos de Imóveis Rurais</h4>
+        <p>O roteiro completo para due diligence. Nada passa despercebido.</p>
+      </div>
+      <div class="bonus-item" data-aos="fade-up" data-aos-delay="100">
+        <h4>Guia Prático de Atendimento</h4>
+        <p>Como conduzir a reunião com o produtor rural com autoridade e clareza desde o primeiro contato.</p>
+      </div>
+      <div class="bonus-item" data-aos="fade-up" data-aos-delay="150">
+        <h4>Bibliografia Comentada</h4>
+        <p>As referências que sustentam sua especialização, organizadas e comentadas para quem quer ir mais fundo.</p>
+      </div>
+      <div class="bonus-item" data-aos="fade-up" data-aos-delay="200">
+        <h4>Estudo de Caso Real</h4>
+        <p>Análise de um caso concreto da área para você ver a teoria funcionando na prática real do campo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ PARA QUEM ════════ -->
+<section class="s-paraquem">
+  <div class="container container--narrow">
+    <span class="label" data-aos="fade-up">Para quem é este curso</span>
+    <h2 data-aos="fade-up">Este curso é <em>para você</em> se você se reconhece aqui.</h2>
+    <ul class="check-list">
+      <li data-aos="fade-up">
+        <span class="check-ico"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M9.917.583L3.5 7 .583 4.083" stroke="#C4AF96" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Advogada formada que quer se especializar num mercado sólido e com honorários acima da média.
+      </li>
+      <li data-aos="fade-up" data-aos-delay="50">
+        <span class="check-ico"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M9.917.583L3.5 7 .583 4.083" stroke="#C4AF96" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Atua como generalista e sente que chegou a hora de ter uma especialização de verdade, não só no papel.
+      </li>
+      <li data-aos="fade-up" data-aos-delay="100">
+        <span class="check-ico"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M9.917.583L3.5 7 .583 4.083" stroke="#C4AF96" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Conhece o direito, mas quer entender como o campo funciona para conversar de igual para igual com produtores rurais.
+      </li>
+      <li data-aos="fade-up" data-aos-delay="150">
+        <span class="check-ico"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M9.917.583L3.5 7 .583 4.083" stroke="#C4AF96" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Tem receio de pegar contratos de alto valor e quer a segurança técnica para fazer isso bem feito.
+      </li>
+      <li data-aos="fade-up" data-aos-delay="200">
+        <span class="check-ico"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M9.917.583L3.5 7 .583 4.083" stroke="#C4AF96" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Quer virar referência no agro e está disposta a estudar com método para chegar lá.
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════ DIVISOR ════════ -->
+<div class="divider-gold divider-gold--flat"></div>
+
+<!-- ════════ BIO ════════ -->
+<section class="s-quem">
+  <div class="container">
+    <div class="bio-inner">
+      <div class="bio-foto-wrap" data-aos="fade-right">
+        <img
+          class="bio-foto"
+          src="foto-bio.png"
+          alt="Bárbara Bindeli"
+        >
+      </div>
+      <div class="bio-texto" data-aos="fade-up">
+        <span class="label" data-aos="fade-up">Quem vai te ensinar</span>
+        <h3>Bárbara Bindeli</h3>
+        <span class="cargo">Advogada especializada em contratos do agronegócio</span>
+        <p>Filha de produtor rural, Bárbara cresceu no campo. Aprendeu cedo o peso de uma decisão sobre terra, safra e patrimônio familiar.</p>
+        <p>Quando levou essa vivência para o Direito, percebeu um problema que se repetia: contratos elaborados por quem não entende como o campo funciona de verdade.</p>
+        <p>A partir daí, passou a construir contratos que fazem sentido para quem vive o agro, com foco em prevenção de riscos e segurança jurídica.</p>
+        <div class="bio-detalhe">
+          <p>Hoje atua como consultora para clientes de alto patrimônio e dedica parte do trabalho a formar advogadas que querem entrar no agro preparadas, sem precisar aprender na marra.</p>
+        </div>
+        <ul class="bio-tags">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 4.667L8 8.667l-6-4V3.333l6 4 6-4v1.334z" fill="#c4af96"/><path d="M1.333 2.667h13.334v10.666H1.333z" stroke="#c4af96" stroke-width="1.2" fill="none"/></svg>
+            Contratos Rurais
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14.667A6.667 6.667 0 108 1.333a6.667 6.667 0 000 13.334z" stroke="#c4af96" stroke-width="1.2"/><path d="M6 8l1.5 1.5L10 6" stroke="#c4af96" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Consultoria Preventiva
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.333v4M6 5.333h4M5.333 8c-2.666.667-3.333 2-3.333 4h12c0-2-1-3.333-3.333-4" stroke="#c4af96" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Agronegócio
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ DIVISOR ════════ -->
+<div class="divider-gold divider-gold--flat"></div>
+
+<!-- ════════ CTA FINAL ════════ -->
+<section class="s-card" id="cta">
+  <div class="container">
+    <span class="label" data-aos="fade-up">Sua decisão começa agora</span>
+    <h2 data-aos="fade-up">O agro não espera.<br><em>E você também não precisa esperar.</em></h2>
+    <div class="card-subtitle" data-aos="fade-up">
+      <p>Cada contrato que você deixa passar por insegurança é um cliente que vai parar na mão de outra advogada.</p>
+    </div>
+
+    <div class="card-price" data-aos="fade-up" data-aos-delay="100">
+      <div class="card-price-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.333 1.333V4M10.667 1.333V4" stroke="#273623" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.667 2.667H3.333A1.333 1.333 0 002 4v9.333a1.333 1.333 0 001.333 1.334h9.334A1.333 1.333 0 0014 13.333V4a1.333 1.333 0 00-1.333-1.333z" stroke="#273623" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 6.667h12" stroke="#273623" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Acesso imediato · Aulas gravadas</span>
+      </div>
+      <div class="card-price-label">Garante sua vaga agora</div>
+      <div class="price-row">
+        <span class="price-currency">R$ </span>
+        <span class="price-value">997</span>
+      </div>
+      <div class="price-installments">ou em até 12x sem juros</div>
+      <a href="#" class="btn-primary">
+        Garantir minha vaga agora
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.33 8H12.67" stroke="#273623" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 3.33L12.67 8L8 12.67" stroke="#273623" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="access-note">Acesso imediato após confirmação do pagamento</span>
+    </div>
+
+    <div class="garantia" data-aos="fade-up" data-aos-delay="200">
+      <div class="garantia-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 18.333s6.667-3.333 6.667-8.333V4.167L10 1.667 3.333 4.167V10c0 5 6.667 8.333 6.667 8.333z" stroke="#c4af96" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10l1.667 1.667L12.5 8.333" stroke="#c4af96" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p><strong>Garantia de 7 dias.</strong><br>Se em uma semana você sentir que este curso não é para você, devolvemos 100% do seu investimento. Sem perguntas.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ FAQ ════════ -->
+<section class="s-faq">
+  <div class="container">
+    <div class="top" data-aos="fade-up">
+      <span class="label">Dúvidas frequentes</span>
+      <h2>Antes de decidir, <em>tire suas dúvidas.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">
+          Preciso ter experiência no agro para acompanhar o curso?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Não. O curso foi pensado para advogadas que estão começando no agro. A Bárbara parte do zero e constrói o raciocínio passo a passo, da base teórica até a prática contratual. Se você já atua na área, vai ganhar método e segurança para lidar com contratos mais complexos.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">
+          As aulas são ao vivo ou gravadas?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <p>As aulas são gravadas. Você assiste no seu ritmo, quantas vezes quiser, de onde estiver. O acesso é imediato após a confirmação do pagamento.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">
+          O curso inclui modelos de contrato prontos?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Sim. Você recebe minutas de contratos agrários, notificações e distrato como bônus. São modelos revisados que você pode adaptar para seus atendimentos desde o primeiro cliente.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">
+          Por quanto tempo terei acesso ao conteúdo?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <p>O prazo de acesso será informado na página de checkout. Mas pode ficar tranquila: você terá tempo de sobra para assistir, revisar e aplicar tudo com calma.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">
+          E se eu comprar e não gostar?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Você tem 7 dias de garantia incondicional. Se sentir que o curso não é para você, basta pedir o reembolso dentro desse prazo e devolvemos 100% do valor. Sem burocracia.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">
+          Consigo começar a atender clientes do agro logo depois do curso?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Esse é o objetivo. O último módulo é dedicado a isso: como se posicionar, como abordar produtores rurais e como fechar seus primeiros contratos no agro. Você sai com as ferramentas e a segurança técnica para atender de verdade.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Bárbara Bindeli. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ once: true });</script>
+</body>
+</html>
