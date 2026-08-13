@@ -113,8 +113,8 @@
   }
   .s-banner .container { width: 100%; }
   .s-banner .info { max-width: 62rem; }
-  .s-banner .info .logo { margin-bottom: 3.6rem; max-width: 24rem; height: 13.4rem; }
-  .s-banner .info h1 { font-size: 4.4rem; margin-top: 2.4rem; line-height: 116%; }
+  .s-banner .info .brand { font-size: 3.6rem; margin-bottom: 3.6rem; }
+  .s-banner .info h1 { font-size: 4.2rem; margin-top: 0; line-height: 114%; }
   .s-banner .info p { margin-top: 2rem; font-size: 1.8rem; line-height: 158%; }
   .s-banner .info a.btn-primary { margin-top: 3rem; }
   .event-meta--top { margin-bottom: 1.6rem; }
@@ -278,6 +278,117 @@
   background: linear-gradient(180deg, rgba(196,175,150,.07) 0%, rgba(196,175,150,.02) 100%);
 }
 .s-dor .text p.lead b { color: #dac38c; font-weight: 600; }
+
+/* marca textual no topo da hero (substitui a antiga imagem de logo) */
+.s-banner .info .brand {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 104%;
+  color: rgba(255,255,255,.92);
+  letter-spacing: -.5px;
+  margin-bottom: 3.2rem;
+}
+.s-banner .info .brand b { color: #c4af96; font-weight: 400; }
+
+.s-banner .info h1 { margin-top: 0; }
+@media (max-width: 990px) {
+  .s-banner .info .brand { font-size: 2.6rem; margin-bottom: 2.4rem; }
+  .s-banner .info h1 { font-size: 3.2rem; line-height: 118%; }
+}
+
+/* parágrafo de destaque no fecho da seção de mercado */
+.s-mercado .right ul li p b { color: #dac38c; font-weight: 600; }
+.s-mercado .mercado-destaque {
+  margin-top: 3.2rem;
+  padding: 2.8rem 3rem;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(196,175,150,.25);
+  background: linear-gradient(180deg, rgba(196,175,150,.07) 0%, rgba(196,175,150,.02) 100%);
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  font-weight: 500;
+  line-height: 152%;
+}
+@media (max-width: 990px) {
+  .s-mercado .mercado-destaque { text-align: center; font-size: 1.7rem; padding: 2.4rem 2rem; }
+}
+
+/* ── APRENDER: corpo do item + lista dos 6 contratos ── */
+.s-aprender ul li .apr-body { flex: 1; min-width: 0; }
+.s-aprender ul li .apr-nota {
+  margin-top: 1.8rem;
+  color: rgba(255,255,255,.6);
+  font-size: 1.5rem;
+  line-height: 168%;
+}
+/* lista dos contratos: linhas discretas, sem caixa dentro de caixa.
+   Os seletores precisam de .s-aprender para vencer .s-aprender ul li,
+   que também casa com estes li e herdaria contador, borda e padding. */
+.contratos-list {
+  list-style: none;
+  counter-reset: ctr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3.2rem;
+  margin-top: 2.2rem;
+}
+.s-aprender .contratos-list li {
+  counter-increment: ctr;
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding: 1.3rem 0;
+  border: none;
+  border-bottom: 1px solid rgba(196,175,150,.16);
+  border-radius: 0;
+  background: none;
+  color: rgba(255,255,255,.92);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 138%;
+  transform: none;
+  transition: color .3s ease, border-color .3s ease;
+}
+.s-aprender .contratos-list li:hover {
+  transform: none;
+  background: none;
+  border-color: rgba(196,175,150,.4);
+  color: #fff;
+}
+.s-aprender .contratos-list li::before {
+  content: counter(ctr, decimal-leading-zero);
+  flex-shrink: 0;
+  min-width: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .8px;
+  line-height: inherit;
+  color: #dac38c;
+  opacity: .85;
+}
+.s-aprender .contratos-list li:hover::before { opacity: 1; }
+@media (max-width: 760px) {
+  .contratos-list { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* frase de fechamento abaixo da oferta */
+.s-card .card-closing {
+  margin-top: 3.2rem;
+  max-width: 58rem;
+  color: #dac38c;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 2rem;
+  line-height: 146%;
+  text-align: center;
+}
+@media (max-width: 590px) {
+  .s-card .card-closing { font-size: 1.7rem; }
+}
 
 /* linha de transição entre a headline e a lista de situações */
 .s-dor .dor-intro {
@@ -469,6 +580,13 @@
 .s-perfil h2.neg b { color: #e88a80; }
 .s-perfil .check-list { margin-top: 3.2rem; }
 .s-perfil .perfil-cta { text-align: center; margin-top: 4.8rem; }
+/* headline longa: cabe em uma linha no desktop e nunca deixa palavra órfã */
+.s-perfil h2 { font-size: 4.2rem; }
+.s-dor h2, .s-perfil h2, .s-clareza h2, .s-identifica h2,
+.s-aprender h2, .s-mercado .left h2, .s-final h2, .s-card h2 { text-wrap: balance; }
+@media (max-width: 990px) {
+  .s-perfil h2 { font-size: 3.4rem; }
+}
 
 /* ════════════════════════════════════════
    SECTION: CARD / OFERTA — premium
@@ -609,7 +727,7 @@
   overflow: hidden;
   padding: 12rem 0;
   background-color: #2b3320;
-  background-image: linear-gradient(180deg, rgba(22,34,18,.55) 0%, rgba(22,34,18,.94) 100%), url("assets/bg-quem.png");
+  background-image: linear-gradient(180deg, rgba(22,34,18,.55) 0%, rgba(22,34,18,.94) 100%), url("assets/bg-quem.webp");
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -700,7 +818,21 @@
 .s-aprender.sec-light,
 .s-perfil.sec-light,
 .s-identifica.sec-light,
+.s-mercado.sec-light,
 .s-faq.sec-light { background: #f4efe6; }
+
+/* MERCADO claro */
+.s-mercado.sec-light .left h2 { color: #273623; }
+.s-mercado.sec-light .left h2 b { color: #b0883f; }
+.s-mercado.sec-light .left .label { color: #8a7d5f; }
+.s-mercado.sec-light .right ul li p { color: rgba(39,54,35,.75); }
+.s-mercado.sec-light .right ul li p b { color: #b0883f; }
+.s-mercado.sec-light .right ul li .icone { background: rgba(39,54,35,.08); }
+.s-mercado.sec-light .mercado-destaque {
+  color: #273623;
+  border-color: rgba(176,136,63,.35);
+  background: linear-gradient(180deg, rgba(176,136,63,.1) 0%, rgba(176,136,63,.03) 100%);
+}
 
 .sec-light h2 { color: #273623; }
 .sec-light h2 b { color: #b0883f; }

@@ -96,7 +96,7 @@ html.js [data-reveal].is-visible {
 .s-banner {
   padding-top: 7.7rem;
   padding-bottom: 20rem;
-  background-image: url("assets/desktop-scaled.webp");
+  background-image: url("assets/hero-mobile.webp");
   background-position: right -24rem top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -489,7 +489,7 @@ html.js [data-reveal].is-visible {
    SECTION: QUEM (BIO)
    ════════════════════════════════════════ */
 .s-quem {
-  background-image: url("assets/bg-quem.png");
+  background-image: url("assets/bg-quem.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
