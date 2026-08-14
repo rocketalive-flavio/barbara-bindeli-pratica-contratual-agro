@@ -305,58 +305,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<!-- ════════ POPUP LEAD (Brevo) ════════ -->
-<div class="lead-modal" id="leadModal" aria-hidden="true">
-  <div class="lead-modal__overlay" data-close></div>
-  <div class="lead-modal__card" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
-    <button class="lead-modal__close" type="button" data-close aria-label="Fechar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
-    <span class="lead-modal__eyebrow">Investimento único · R$ 97</span>
-    <h3 id="leadTitle">Comece sua atuação em <b>Advocacia no Agronegócio</b></h3>
-    <p class="lead-modal__sub">Deixe seus dados e receba o acesso e todas as informações do conteúdo.</p>
-    <form id="leadForm" novalidate>
-      <div class="lead-field">
-        <label for="leadName">Nome</label>
-        <input type="text" id="leadName" name="name" autocomplete="name" required placeholder="Seu nome completo">
-      </div>
-      <div class="lead-field">
-        <label for="leadEmail">E-mail</label>
-        <input type="email" id="leadEmail" name="email" autocomplete="email" required placeholder="seu@email.com">
-      </div>
-      <div class="lead-field">
-        <label for="leadPhone">WhatsApp</label>
-        <input type="tel" id="leadPhone" name="phone" inputmode="numeric" autocomplete="tel" required placeholder="(00) 00000-0000">
-      </div>
-      <p class="lead-error" id="leadError" role="alert" hidden></p>
-      <button type="submit" class="btn-primary lead-submit" id="leadSubmit">
-        Quero começar no agronegócio
-      </button>
-      <p class="lead-modal__note">Seus dados estão seguros. Sem spam.</p>
-    </form>
-    <div class="lead-success" id="leadSuccess" hidden>
-      <div class="lead-success__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M7 14.5l4.5 4.5L21 9" stroke="#dac38c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h3>Tudo certo!</h3>
-      <p>Recebemos seus dados. Agora é só garantir sua inscrição.</p>
-      <a href="https://pay.kiwify.com.br/30V5m9Z" class="btn-primary">Ir para a inscrição</a>
-    </div>
-  </div>
-</div>
-
-<!-- UTM forwarding para CTAs Kiwify -->
+<!-- CTAs: repasse de UTMs para o checkout + evento de clique no GTM -->
 <script>
 (function(){
+  var ctas = document.querySelectorAll('a[href*="kiwify.com"]');
+
+  // repassa UTMs e click IDs da URL atual para o checkout
   var params = new URLSearchParams(window.location.search);
   var keep = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_id','gclid','fbclid','src'];
   var fwd = new URLSearchParams();
   keep.forEach(function(k){ if(params.has(k)) fwd.set(k, params.get(k)); });
-  if(![...fwd].length) return;
-  document.querySelectorAll('a[href*="kiwify.com"]').forEach(function(a){
-    var url = new URL(a.href);
-    fwd.forEach(function(v,k){ url.searchParams.set(k,v); });
-    a.href = url.toString();
+  if ([...fwd].length) {
+    ctas.forEach(function(a){
+      var url = new URL(a.href);
+      fwd.forEach(function(v,k){ url.searchParams.set(k,v); });
+      a.href = url.toString();
+    });
+  }
+
+  // clique vai direto ao checkout; só registra o evento antes de navegar
+  ctas.forEach(function(a){
+    a.addEventListener('click', function(){
+      var sec = a.closest('section');
+      if (window.dataLayer) window.dataLayer.push({
+        event: 'cta_click',
+        cta_text: (a.textContent || '').trim(),
+        cta_location: sec ? sec.className.split(' ')[0] : 'desconhecida'
+      });
+    });
   });
 })();
 </script>
@@ -413,131 +389,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (sent[100]) window.removeEventListener('scroll', onScroll);
   };
   window.addEventListener('scroll', onScroll, {passive:true});
-})();
-</script>
-<!-- Popup Lead + integração Brevo -->
-<script>
-(function(){
-  var BREVO_ACTION = 'https://4d8b23c7.sibforms.com/v2/serve/MUIFAGVPrjB_9UZ_kYmqV0n0nJKsYm1TPILErkL6R_sDU1Snwd9Tr1kNw6D1vq6mNCM8leedxHPs32LaytumW_2i61XdnNCL0H8XPdSFVMkDgpJJGLkmQ-wMW0eQG0zKdxEZrkg251y4-G1v2dqSvFgNUGDEtmefjtOF75MV78LzHVLAWiRUAhVBAq4kBLP3Q9CS82kXWJNGyzjlLg==';
-  var CHECKOUT_URL = 'https://pay.kiwify.com.br/30V5m9Z';
-
-  var modal = document.getElementById('leadModal');
-  if (!modal) return;
-  var form = document.getElementById('leadForm');
-  var elName = document.getElementById('leadName');
-  var elEmail = document.getElementById('leadEmail');
-  var elPhone = document.getElementById('leadPhone');
-  var elErr = document.getElementById('leadError');
-  var elSubmit = document.getElementById('leadSubmit');
-
-  function openModal(){
-    if (modal.classList.contains('is-open')) return;
-    if (window.dataLayer) window.dataLayer.push({event:'lead_modal_open'});
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-    setTimeout(function(){ elName.focus(); }, 100);
-  }
-  function closeModal(){
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
-  }
-  modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', closeModal); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
-
-  // CTAs de checkout abrem o popup (exceto o link dentro do modal)
-  document.querySelectorAll('a[href*="kiwify.com"]').forEach(function(a){
-    if (a.closest('#leadModal')) return;
-    a.addEventListener('click', function(ev){
-      ev.preventDefault();
-      var sec = a.closest('section');
-      if (window.dataLayer) window.dataLayer.push({
-        event: 'cta_click',
-        cta_text: (a.textContent || '').trim(),
-        cta_location: sec ? sec.className.split(' ')[0] : 'desconhecida'
-      });
-      openModal();
-    });
-  });
-  document.querySelectorAll('[data-open-lead]').forEach(function(el){
-    el.addEventListener('click', function(ev){ ev.preventDefault(); openModal(); });
-  });
-
-  // Máscara WhatsApp (00) 00000-0000
-  elPhone.addEventListener('input', function(){
-    var d = this.value.replace(/\D/g,'').slice(0,11);
-    var out = '';
-    if (d.length > 0) out = '(' + d.slice(0,2);
-    if (d.length >= 3) out += ') ' + d.slice(2,7);
-    if (d.length >= 8) out += '-' + d.slice(7,11);
-    this.value = out;
-  });
-
-  function showErr(msg){ elErr.textContent = msg; elErr.hidden = false; }
-  function clearErr(){ elErr.hidden = true; [elName,elEmail,elPhone].forEach(function(i){ i.classList.remove('invalid'); }); }
-
-  // mantém UTMs no redirect do checkout
-  function checkoutWithUtm(){
-    try {
-      var p = new URLSearchParams(window.location.search);
-      var keep = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_id','gclid','fbclid','src'];
-      var url = new URL(CHECKOUT_URL);
-      keep.forEach(function(k){ if (p.has(k)) url.searchParams.set(k, p.get(k)); });
-      return url.toString();
-    } catch(e){ return CHECKOUT_URL; }
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    clearErr();
-    var name = elName.value.trim();
-    var email = elEmail.value.trim();
-    var phoneDigits = elPhone.value.replace(/\D/g,'');
-    var ok = true;
-    if (name.length < 2) { elName.classList.add('invalid'); ok = false; }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { elEmail.classList.add('invalid'); ok = false; }
-    if (phoneDigits.length < 10) { elPhone.classList.add('invalid'); ok = false; }
-    if (!ok) { showErr('Confira os campos destacados.'); return; }
-
-    elSubmit.disabled = true;
-    elSubmit.textContent = 'Enviando...';
-
-    // iframe oculto recebe a resposta do Brevo (evita CORS)
-    var sink = document.getElementById('brevo_sink');
-    if (!sink) {
-      sink = document.createElement('iframe');
-      sink.name = 'brevo_sink'; sink.id = 'brevo_sink';
-      sink.style.display = 'none';
-      document.body.appendChild(sink);
-    }
-
-    var redirected = false;
-    function go(){ if (redirected) return; redirected = true; window.location.href = checkoutWithUtm(); }
-
-    var submitted = false;
-    sink.onload = function(){ if (submitted) go(); };
-
-    // form oculto com os campos exatos do Brevo (multipart/form-data)
-    var bf = document.createElement('form');
-    bf.action = BREVO_ACTION; bf.method = 'POST'; bf.target = 'brevo_sink';
-    bf.setAttribute('enctype', 'multipart/form-data');
-    bf.setAttribute('accept-charset', 'UTF-8');
-    bf.style.display = 'none';
-    function add(n,v){ var i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; bf.appendChild(i); }
-    add('EMAIL', email);
-    add('NOME', name);
-    add('SMS', phoneDigits);          // número nacional (DDD + número), sem +55
-    add('SMS__COUNTRY_CODE', '+55');  // DDI Brasil
-    add('locale', 'pt');
-    add('email_address_check', ''); // honeypot vazio
-    document.body.appendChild(bf);
-
-    if (window.dataLayer) window.dataLayer.push({event:'lead_submit'});
-    submitted = true;
-    bf.submit();
-    setTimeout(go, 3000); // fallback de redirect
-  });
 })();
 </script>
 </body>

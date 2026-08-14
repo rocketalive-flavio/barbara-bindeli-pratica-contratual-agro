@@ -109,7 +109,9 @@
     background-size: contain;               /* imagem inteira, nunca cortada */
     background-position: right bottom;
     padding-top: 6rem;
-    padding-bottom: 6rem;
+    /* a seção seguinte sobe 10rem sobre a hero (margin-top negativo);
+       o padding extra mantém o CTA fora da área coberta */
+    padding-bottom: 16rem;
   }
   .s-banner .container { width: 100%; }
   .s-banner .info { max-width: 62rem; }
